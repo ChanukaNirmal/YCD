@@ -1,0 +1,122 @@
+/* Reset & Base */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: "Segoe UI", sans-serif;
+    background-color: #0f0f0f;
+    color: #fff;
+  }
+  
+  /* Header */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #1f1f1f;
+    padding: 10px 20px;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+  }
+  
+  .logo img {
+    width: 40px;
+  }
+  
+  .search-bar {
+    display: flex;
+    align-items: center;
+    flex: 1;
+    max-width: 600px;
+    margin: 0 20px;
+    position: relative;
+  }
+  
+  .search-bar input {
+    width: 100%;
+    padding: 10px 40px 10px 10px;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+  }
+  
+  .search-bar .search-btn,
+  .search-bar .clear {
+    position: absolute;
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: #aaa;
+    cursor: pointer;
+  }
+  
+  .search-bar .clear {
+    right: 35px;
+  }
+  
+  .search-bar .search-btn {
+    right: 10px;
+  }
+  
+  .signup button {
+    background-color: #d32f2f;
+    color: white;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 20px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  /* Video Grid */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .video-card {
+    background-color: #1e1e1e;
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .video-card:hover {
+    transform: scale(1.03);
+  }
+  
+  .video-card img {
+    width: 100%;
+    display: block;
+  }
+  
+  .video-info {
+    padding: 10px;
+  }
+  
+  .video-info h4 {
+    font-size: 1rem;
+    margin-bottom: 4px;
+    color: #fff;
+  }
+  
+  .video-info p {
+    font-size: 0.85rem;
+    color: #aaa;
+  }
+  
