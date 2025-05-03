@@ -1,0 +1,65 @@
+body {
+    background-color: #0f0f0f;
+    font-family: "Segoe UI", sans-serif;
+  }
+  
+  .max-width {
+    max-width: 1200px;
+    margin: auto;
+  }
+  
+  .option-box {
+    background-color: transparent;
+    border: 1px solid #888;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+  }
+  
+  .option-box:hover {
+    background-color: #1c1c1c;
+  }
+  
+  .icon-circle {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .icon-circle img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .option-label {
+    font-size: 1.3rem;
+    font-weight: 500;
+    color: white;
+  }
+  
+  .continue-btn {
+    background-color: #e80000;
+    color: white;
+    border: none;
+    border-radius: 999px;
+    padding: 10px 30px;
+    font-weight: bold;
+    font-size: 1rem;
+  }
+  
+  .continue-btn:hover {
+    background-color: #c60000;
+  }
+  
+  .illustration {
+    border-radius: 40px;
+    max-height: 90vh;
+  }
+  
