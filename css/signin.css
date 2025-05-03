@@ -1,0 +1,49 @@
+body {
+    background-color: #0f0f0f;
+    font-family: 'Segoe UI', sans-serif;
+  }
+  
+  .logo-img{
+    height: 330px;
+  }
+  
+  .login-card {
+    background-color: #171717; /* Updated */
+  border-radius: 33px;        /* Updated */
+    
+    border-radius: 20px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.3);
+  }
+  
+  .form-input {
+    background-color: #222;
+    border: none;
+    color: #fff;
+    padding: 12px 15px;
+    border-radius: 8px;
+    font-size: 0.95rem;
+  }
+  
+  .form-input::placeholder {
+    color: #aaa;
+  }
+  
+  .form-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #555;
+  }
+  
+  .google-btn {
+    background-color: #222;
+    color: #fff;
+    border: 1px solid #444;
+    font-weight: 500;
+  }
+  
+  .google-icon {
+    width: 10px;
+    height: 10px;
+  }
+  
