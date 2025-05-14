@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Creator Home</title>
+  <link rel="stylesheet" href="../YCD/css/creatorHome.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <header class="header">
+   <div class="logo">
+      <img src="../YCD/images/logo3.png" alt="You Cook Logo"/>
+    </div>
+    <div class="search-bar">
+      <input type="text" placeholder="Search channel or food item" />
+      <button class="clear">
+        <img src="../YCD/images/close.png" alt="Clear" />
+      </button>
+      <button class="search-btn">
+        <img src="../YCD/images/search.png" alt="Search" />
+      </button>
+    </div>
+    <div class="actions">
+  <button class="create"><img src="../YCD/images/plus.png"> Create</button>
+  <button class="profile"><img src="../YCD/images/user.png" alt="User Icon" /></button>
+</div>
+  </header>
+
+  <main>
+    <section class="channel-info">
+      <img src="../YCD/images/MR.png" alt="Channel Logo" class="channel-logo">
+      <div class="channel-details">
+        <h1>Channel Name</h1>
+        <p>9 subscribers</p>
+        <p>2 Complete Orders</p>
+      </div>
+      <div class="channel-buttons">
+        <button class="orders"><img src="../YCD/images/orders.png"> Orders</button>
+        <button class="add-recipes"><img src="../YCD/images/addRec.png"> Add Recipes</button>
+      </div>
+    </section>
+
+    <section class="my-recipes">
+  <h2>My Recipies</h2>
+  <div class="recipe-grid">
+    <div class="recipe-card">
+      <div class="thumbnail-wrapper">
+        <img class="thumbnail" src="../YCD/images/thumb.png" alt="Recipe Thumbnail">
+        <input type="checkbox" class="recipe-checkbox" />
+      </div>
+      <div class="card-info">
+        <img class="channel-icon" src="../YCD/images/MR.png" alt="Channel Icon">
+        <div>
+          <p class="title">Ramzan Special Recipes for Iftar | Chinese Potato Kabab Recipe</p>
+          <p class="meta">MR Kitchen · LKR 200.00</p>
+        </div>
+      </div>
+    </div>
+      <div class="recipe-grid">
+    <div class="recipe-card">
+      <div class="thumbnail-wrapper">
+        <img class="thumbnail" src="../YCD/images/thumb.png" alt="Recipe Thumbnail">
+        <input type="checkbox" class="recipe-checkbox" />
+      </div>
+      <div class="card-info">
+        <img class="channel-icon" src="../YCD/images/MR.png" alt="Channel Icon">
+        <div>
+          <p class="title">Ramzan Special Recipes for Iftar | Chinese Potato Kabab Recipe</p>
+          <p class="meta">MR Kitchen · LKR 200.00</p>
+        </div>
+      </div>
+    </div>
+    <!-- Repeat recipe-card for more items -->
+  </div>
+</section>
+
+  </main>
+</body>
+</html>
