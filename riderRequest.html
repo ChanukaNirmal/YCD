@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>New Delivery Requests</title>
+  <link rel="stylesheet" href="../YCD/css/riderRequest.css" />
+</head>
+<body>
+  <header>
+    <h1>New Delivery Requests</h1>
+    <img src="../YCD/images/logo.png" alt="Logo" class="logo" />
+  </header>
+  <hr />
+  <div class="requests-container" id="requestsContainer">
+    <!-- JS will inject requests here -->
+  </div>
+
+  <script>
+    // Sample requests (you can fetch from an API too)
+const requests = [
+  {
+    id: 1,
+    item: "Spaghetti",
+    pickup: "123 Main St, City",
+    dropoff: "456 Elm St, City",
+    fee: "LKR 280.00"
+  },
+  {
+    id: 2,
+    item: "Spaghetti",
+    pickup: "123 Main St, City",
+    dropoff: "456 Elm St, City",
+    fee: "LKR 230.00"
+  },
+  {
+    id: 3,
+    item: "Spaghetti",
+    pickup: "123 Main St, City",
+    dropoff: "456 Elm St, City",
+    fee: "LKR 297.00"
+  }
+];
+
+const container = document.getElementById("requestsContainer");
+
+// Render requests
+requests.forEach(request => {
+  const card = document.createElement("div");
+  card.className = "request-card";
+  card.innerHTML = `
+    <div class="request-info">
+      <p><strong>Food Item</strong> : ${request.item}</p>
+      <p><strong>Pickup Location</strong> : ${request.pickup}</p>
+      <p><strong>Drop-off Location</strong> : ${request.dropoff}</p>
+      <p><strong>Estimated Delivery Fee</strong> : ${request.fee}</p>
+    </div>
+    <div class="buttons">
+      <button class="accept-btn">Accept</button>
+      <button class="reject-btn">Reject</button>
+    </div>
+  `;
+
+  const acceptBtn = card.querySelector(".accept-btn");
+  const rejectBtn = card.querySelector(".reject-btn");
+
+  // Handle Accept
+  acceptBtn.addEventListener("click", () => {
+    const pickupEncoded = encodeURIComponent(request.pickup);
+    const dropoffEncoded = encodeURIComponent(request.dropoff);
+    const mapsURL = `https://www.google.com/maps/dir/?api=1&origin=${pickupEncoded}&destination=${dropoffEncoded}`;
+    window.open(mapsURL, "_blank");
+  });
+
+  // Handle Reject
+  rejectBtn.addEventListener("click", () => {
+    const confirmed = confirm("Are you sure you want to reject this delivery?");
+    if (confirmed) {
+      card.remove();
+    }
+  });
+
+  container.appendChild(card);
+});
+
+  </script>
+</body>
+</html>

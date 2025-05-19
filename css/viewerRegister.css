@@ -1,0 +1,131 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+header h1 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.logo img {
+    width: 40px;
+    height: 40px;
+}
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+    align-items: center;
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #000;
+  font-family: Arial, sans-serif;
+  color: white;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  background-color: #1a1a1a;
+  padding: 40px 32px;
+  border-radius: 24px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  text-align: center;
+}
+
+.form-container h2 {
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 32px;
+}
+
+form input {
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: #2b2b2b;
+  color: white;
+  font-size: 14px;
+}
+
+form input::placeholder {
+  color: #999;
+}
+
+.signup-btn {
+  width: 100%;
+  padding: 12px;
+  background-color: white;
+  color: black;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.divider {
+  display: flex;
+  align-items: center;
+  margin: 24px 0;
+  gap: 10px;
+  color: #999;
+  font-size: 12px;
+}
+
+.divider hr {
+  flex: 1;
+  border: none;
+  border-top: 1px solid #444;
+}
+
+.google-btn {
+  width: 100%;
+  background-color: #2b2b2b;
+  color: white;
+  border: 1px solid #444;
+  padding: 12px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.google-btn img {
+  width: 18px;
+  height: 18px;
+}
+
+.signin-text {
+  margin-top: 24px;
+  font-size: 12px;
+  color: #999;
+}
+
+.signin-text a {
+  color: white;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.signin-text a:hover {
+  text-decoration: underline;
+}

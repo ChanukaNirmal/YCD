@@ -1,0 +1,71 @@
+body {
+  background-color: #111;
+  font-family: Arial, sans-serif;
+  color: white;
+  margin: 0;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 40px;
+}
+
+h1 {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+hr {
+  border: 0;
+  height: 1px;
+  background-color: #444;
+  margin: 10px 0 20px;
+}
+
+.requests-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.request-card {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 15px;
+  position: relative;
+}
+
+.request-info p {
+  margin: 8px 0;
+}
+
+.buttons {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+button {
+  border: none;
+  padding: 6px 12px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.accept-btn {
+  background-color: #c62828;
+  color: white;
+}
+
+.reject-btn {
+  background-color: #000;
+  color: white;
+  border: 1px solid #555;
+}
