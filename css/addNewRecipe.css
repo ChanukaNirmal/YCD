@@ -1,0 +1,113 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #0d0d0d;
+  color: #fff;
+  padding: 20px;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
+}
+
+header h1 {
+  font-size: 24px;
+}
+
+.logo {
+  width: 40px;
+  height: 40px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+input[type="text"],
+input[type="url"],
+input[type="number"],
+input[type="file"],
+textarea {
+  background-color: #1c1c1c;
+  color: #ccc;
+  padding: 10px;
+  border: 1px solid #333;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+textarea {
+  height: 80px;
+  resize: vertical;
+}
+
+.buttons {
+  display: flex;
+  gap: 20px;
+}
+
+.buttons button {
+  padding: 10px 20px;
+  border: none;
+  font-size: 16px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.buttons button:first-child {
+  background-color: #fff;
+  color: #000;
+}
+
+.buttons button:last-child {
+  background-color: red;
+  color: #fff;
+}
+
+#previewContainer {
+  margin-top: 30px;
+}
+
+#previewContainer h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.card {
+  display: flex;
+  gap: 20px;
+  background-color: #1c1c1c;
+  padding: 15px;
+  border-radius: 10px;
+  align-items: flex-start;
+}
+
+.card img {
+  width: 120px;
+  height: 120px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.card div {
+  font-size: 14px;
+}
+
+iframe {
+  margin-top: 10px;
+  border-radius: 10px;
+}

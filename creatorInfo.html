@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recipe Creator Details</title>
+    <link rel="stylesheet" href="../YCD/css/creatorInfo.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Recipe Creator Details</h1>
+            <div class="logo">
+                <img src="../YCD/images/logo.png" alt="Logo">
+            </div>
+        </header>
+        <form>
+            <div class="form-group">
+                <label for="channel_name"> YouTube Channel Name</label>
+                <input type="text" id="name" name="channel_name">
+            </div>
+            <div class="form-group">
+                <label for="channel_link"> YouTube Channel link</label>
+                <input type="text" id="address" name="channel_link">
+            </div>
+            <div class="form-group">
+                <label for="subs">  Number of Subscribers</label>
+                <input type="email" id="email" name="subs">
+            </div>
+            <div class="form-group">
+                <label for="recipes">  Number of Recipes</label>
+                <input type="tel" id="phone" name="recipes">
+            </div>
+            
+            <div class="button-group">
+                <button type="button" class="next-btn">Next</button>
+                <button type="button" class="reset-btn">Reset</button>
+            </div>
+        </form>
+      
+        </div>
+        <p class="sign-in">You already have an account please <a href="#">Sign in</a></p>
+    </div>
+    <script>
+        // Placeholder for button actions
+        document.querySelector('.next-btn').addEventListener('click', () => {
+            alert('Next button clicked!');
+        });
+
+        document.querySelector('.reset-btn').addEventListener('click', () => {
+            alert('Reset button clicked!');
+        });
+    </script>
+</body>
+</html>

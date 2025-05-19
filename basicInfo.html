@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Information</title>
+    <link rel="stylesheet" href="../YCD/css/basicInfo.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Basic Information</h1>
+            <div class="logo">
+                <img src="../YCD/images/logo.png" alt="Logo">
+            </div>
+        </header>
+        <form>
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name">
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input type="text" id="address" >
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" >
+            </div>
+            <div class="form-group">
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone">
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password">
+            </div>
+            <div class="button-group">
+                <button type="button" class="next-btn">Next</button>
+                <button type="button" class="reset-btn">Reset</button>
+            </div>
+        </form>
+     
+        <p class="sign-in">You already have an account please <a href="#">Sign in</a></p>
+    </div>
+    <script>
+        // Placeholder for button actions
+        document.querySelector('.next-btn').addEventListener('click', () => {
+            alert('Next button clicked!');
+        });
+
+        document.querySelector('.reset-btn').addEventListener('click', () => {
+            alert('Reset button clicked!');
+        });
+    </script>
+</body>
+</html>
