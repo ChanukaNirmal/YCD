@@ -6,6 +6,18 @@
   <title>You Cook Delivers - User Type</title>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" />
   <link rel="stylesheet" href="../YCD/css/type.css" />
+  <style>
+    .option-box {
+      cursor: pointer;
+      border: 2px solid transparent;
+      padding: 10px;
+      border-radius: 10px;
+    }
+    .option-box.selected {
+      border-color: #fff;
+      background-color: rgba(255,255,255,0.1);
+    }
+  </style>
 </head>
 <body>
   <div class="container-fluid min-vh-100 d-flex align-items-center justify-content-center bg-dark text-white">
@@ -14,29 +26,29 @@
       <div class="col-md-6 d-flex flex-column justify-content-center align-items-start p-4">
         <h3 class="mb-5">I am a ....</h3>
 
-        <div class="option-box mb-4 d-flex align-items-center">
+        <div class="option-box mb-4 d-flex align-items-center" data-type="viewer">
           <div class="icon-circle">
             <img src="../YCD/images/viewer.png" alt="Viewer" />
           </div>
           <div class="option-label ms-3">Viewer</div>
         </div>
 
-        <div class="option-box mb-4 d-flex align-items-center">
+        <div class="option-box mb-4 d-flex align-items-center" data-type="creator">
           <div class="icon-circle">
             <img src="../YCD/images/creator.png" alt="Recipe Creator" />
           </div>
           <div class="option-label ms-3">Recipe Creator</div>
         </div>
 
-        <div class="option-box mb-5 d-flex align-items-center">
+        <div class="option-box mb-5 d-flex align-items-center" data-type="delivery">
           <div class="icon-circle">
             <img src="../YCD/images/rider.png" alt="Delivery Service" />
           </div>
           <div class="option-label ms-3">Delivery Service</div>
         </div>
 
-        <button class="continue-btn">Continue</button>
-        <p class="mt-3 small">already have an account <a href="#" class="text-white fw-bold">Click here.</a></p>
+        <button class="continue-btn btn btn-light">Continue</button>
+        <p class="mt-3 small">Already have an account <a href="../YCD/signin.html" class="text-white fw-bold">Click here.</a></p>
       </div>
 
       <!-- Right Section -->
@@ -45,6 +57,41 @@
       </div>
     </div>
   </div>
+
+  <script>
+    let selectedType = null;
+
+    const options = document.querySelectorAll(".option-box");
+    options.forEach(option => {
+      option.addEventListener("click", () => {
+        options.forEach(o => o.classList.remove("selected"));
+        option.classList.add("selected");
+        selectedType = option.getAttribute("data-type");
+      });
+    });
+
+    document.querySelector(".continue-btn").addEventListener("click", () => {
+      if (!selectedType) {
+        alert("Please select a type before continuing.");
+        return;
+      }
+
+      let redirectPath = "";
+      switch (selectedType) {
+        case "viewer":
+          redirectPath = "../YCD/viewerRegister.html";
+          break;
+        case "creator":
+          redirectPath = "../YCD/basicInfo.html";
+          break;
+        case "delivery":
+          redirectPath = "../YCD/deliveryRegister.html";
+          break;
+      }
+
+      window.location.href = redirectPath;
+    });
+  </script>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
