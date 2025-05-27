@@ -38,8 +38,10 @@
       <label>Delivery Areas</label>
       <input type="text" id="deliveryAreas" placeholder="Enter Delivery Areas" required>
 
-      <label>Dish Image</label>
-      <input type="file" id="dishImage" accept="image/*">
+      <label>Dish Images</label>
+      <input type="file" id="dishImage1" accept="image/*">
+      <input type="file" id="dishImage2" accept="image/*">
+      <input type="file" id="dishImage3" accept="image/*">
 
       <div class="buttons">
         <button type="button" onclick="previewRecipe()">Preview</button>
@@ -62,7 +64,7 @@
       const price = document.getElementById('price').value;
       const deliveryTime = document.getElementById('deliveryTime').value;
       const deliveryAreas = document.getElementById('deliveryAreas').value;
-      const dishImage = document.getElementById('dishImage').files[0];
+      const dishImage = document.getElementById('dishImage1').files[0];
 
       const preview = document.getElementById('preview');
       preview.innerHTML = '';
