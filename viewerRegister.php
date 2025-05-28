@@ -17,7 +17,7 @@
 
   <div class="form-container">
     <h2>Sign up</h2>
-    <form action="signin.php" method="POST">
+    <form action="" method="POST">
       <input type="text" name="name" placeholder="Name" required />
       <input type="text" name="address" placeholder="Address" required />
       <input type="email" name="email" placeholder="Email" required />
@@ -55,6 +55,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $insert_stmt->bind_param("sssss", $name, $address, $email, $phone, $hashed_password);
             if ($insert_stmt->execute()) {
                 echo "<p style='color:green;'>Registration successful!</p>";
+          
+                // Redirect to login page or another page if needed
+                header("Location: ../YCD/Vsignin.php");
             } else {
                 echo "<p style='color:red;'>Error: " . $insert_stmt->error . "</p>";
             }

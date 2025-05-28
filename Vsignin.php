@@ -1,44 +1,38 @@
 <?php
 session_start();
 $loginError = '';
+$showError = false;
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    include 'connection.php';
+    include 'connection.php'; // your DB connection file
 
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    // Function to check credentials in a table
-    function checkCredentials($conn, $table, $emailField, $passwordField, $email, $password) {
-        $stmt = $conn->prepare("SELECT $passwordField FROM $table WHERE $emailField = ?");
-        $stmt->bind_param("s", $email);
-        $stmt->execute();
-        $stmt->store_result();
+    // Check if email exists in viewerRegister
+    $stmt = $conn->prepare("SELECT Password FROM viewerRegister WHERE Email = ?");
+    $stmt->bind_param("s", $email);
+    $stmt->execute();
+    $stmt->store_result();
 
-        if ($stmt->num_rows === 1) {
-            $stmt->bind_result($hashedPassword);
-            $stmt->fetch();
-            if (password_verify($password, $hashedPassword)) {
-                return true;
-            }
+    if ($stmt->num_rows === 1) {
+        $stmt->bind_result($hashedPassword);
+        $stmt->fetch();
+
+        if (password_verify($password, $hashedPassword)) {
+            // Login success - redirect to viewerHome
+            header("Location: viewerHome.html");
+            exit;
+        } else {
+            $loginError = "Invalid email or password.";
+            $showError = true;
         }
-        return false;
-    }
-
-    // Check in each table
-    if (checkCredentials($conn, 'creatorRegister', 'Email', 'Password', $email, $password)) {
-        header("Location: creatorHome.html");
-        exit;
-    } elseif (checkCredentials($conn, 'viewerRegister', 'Email', 'Password', $email, $password)) {
-        header("Location: viewerHome.html");
-        exit;
-    } elseif (checkCredentials($conn, 'riderRegister', 'Email', 'Password', $email, $password)) {
-        header("Location: riderHome.html");
-        exit;
     } else {
         $loginError = "Invalid email or password.";
+        $showError = true;
     }
 
+    $stmt->close();
     $conn->close();
 }
 ?>
@@ -73,7 +67,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
           <?php endif; ?>
 
-          <form method="POST" action="signin.php">
+          <form method="POST" action="">
             <input type="email" name="email" class="form-control form-input mb-3" placeholder="Email" required />
             <input type="password" name="password" class="form-control form-input mb-2" placeholder="Password" required />
             <div class="text-end mb-4">
