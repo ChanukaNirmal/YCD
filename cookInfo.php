@@ -1,6 +1,6 @@
 <?php
 session_start();
-include 'connection.php'; // Your DB connection file
+include 'connection.php'; // DB connection file
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_SESSION['name'];
@@ -11,12 +11,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $channel_link = $_SESSION['channel_link'];
     $subs = $_SESSION['subs'];
     $recipes = $_SESSION['recipes'];
-    $location = $_POST['location']; // collected in this step
+    $logo = $_SESSION['channel_logo'] ?? '';  // Optional check
+    $location = $_POST['location'];
 
-    $sql = "INSERT INTO creatorRegister (Name, Email, Phone_number, Password, Channel_name, Channel_link, Number_of_subscribers, Number_of_recipes, Location)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO creatorRegister (Name, Email, Phone_number, Password, Channel_name, Channel_link, Number_of_subscribers, Number_of_recipes, Location, logo)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    
     $stmt = $conn->prepare($sql);
-    $stmt->bind_param("ssssssiss", $name, $email, $phone, $password, $channel_name, $channel_link, $subs, $recipes, $location);
+    $stmt->bind_param("ssssssisss", $name, $email, $phone, $password, $channel_name, $channel_link, $subs, $recipes, $location, $logo);
 
     if ($stmt->execute()) {
         session_destroy();

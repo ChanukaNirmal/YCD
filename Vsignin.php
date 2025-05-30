@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if (password_verify($password, $hashedPassword)) {
             // Login success - redirect to viewerHome
-            header("Location: viewerHome.html");
+            header("Location: viewerHome.php");
             exit;
         } else {
             $loginError = "Invalid email or password.";

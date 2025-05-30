@@ -10,27 +10,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'] ?? '';
 
     // Check if email exists in viewerRegister
-    $stmt = $conn->prepare("SELECT Password FROM creatorRegister WHERE Email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->store_result();
+$stmt = $conn->prepare("SELECT Creator_ID, Password FROM creatorRegister WHERE Email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$stmt->store_result();
 
-    if ($stmt->num_rows === 1) {
-        $stmt->bind_result($hashedPassword);
-        $stmt->fetch();
+if ($stmt->num_rows === 1) {
+    $stmt->bind_result($creator_id_from_db, $hashedPassword);
+    $stmt->fetch();
 
-        if (password_verify($password, $hashedPassword)) {
-            // Login success - redirect to viewerHome
-            header("Location: creatorHome.html");
-            exit;
-        } else {
-            $loginError = "Invalid email or password.";
-            $showError = true;
-        }
+    if (password_verify($password, $hashedPassword)) {
+        $_SESSION['Creator_ID'] = $creator_id_from_db; // ✅ properly set session
+        header("Location: creatorHome.php");
+        exit;
     } else {
         $loginError = "Invalid email or password.";
         $showError = true;
     }
+} else {
+    $loginError = "Invalid email or password.";
+    $showError = true;
+}
+
 
     $stmt->close();
     $conn->close();
