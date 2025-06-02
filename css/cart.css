@@ -171,3 +171,12 @@ header {
   border-radius: 6px;
   cursor: pointer;
 }
+.order-buttons {
+  display: flex;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.order-buttons form {
+  margin: 0;
+}

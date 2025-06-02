@@ -334,3 +334,24 @@ header {
 }
 
 
+.thumbnail-bar {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.thumbnail-bar .thumbnail {
+  width: 80px;
+  height: 60px;
+  object-fit: cover;
+  border: 2px solid #ccc;
+  border-radius: 6px;
+  transition: transform 0.2s;
+}
+
+.thumbnail-bar .thumbnail:hover {
+  transform: scale(1.05);
+  border-color: #ff6b00;
+}

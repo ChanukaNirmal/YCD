@@ -7,6 +7,19 @@ $recipe_id = $_GET['recipe_id'] ?? null;
 $recipe = null;
 $sideRecipes = [];
 
+$reviews = [];
+if ($recipe_id) {
+    $revStmt = $conn->prepare("SELECT ReviewerName, Rating, Comment FROM Review WHERE Recipe_ID = ? ORDER BY Created_at DESC");
+    $revStmt->bind_param("i", $recipe_id);
+    $revStmt->execute();
+    $revResult = $revStmt->get_result();
+    while ($row = $revResult->fetch_assoc()) {
+        $reviews[] = $row;
+    }
+    $revStmt->close();
+}
+
+
 if ($recipe_id) {
     // Main recipe + creator info
     $stmt = $conn->prepare("
@@ -39,6 +52,21 @@ if ($recipe_id) {
     $sideStmt->close();
 }
 
+// Handle Review Submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_review'])) {
+    $viewer_id = $_SESSION['Viewer_ID'] ?? null;
+    $reviewer_name = $_POST['reviewer_name'] ?? '';
+    $rating = $_POST['rating'] ?? '';
+    $comment = $_POST['comment'] ?? '';
+
+    if ($recipe_id && $reviewer_name && $rating && $comment) {
+        $stmt = $conn->prepare("INSERT INTO Review (Viewer_ID, Recipe_ID, ReviewerName, Rating, Comment) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("iisis", $viewer_id, $recipe_id, $reviewer_name, $rating, $comment);
+        $stmt->execute();
+        $stmt->close();
+    }
+}
+
 $conn->close();
 ?>
 
@@ -50,6 +78,7 @@ $conn->close();
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>You Cook Delivers</title>
   <link rel="stylesheet" href="../YCD/css/productDetails.css" />
+
 </head>
 <body>
 
@@ -64,9 +93,9 @@ $conn->close();
     <button class="search-btn"><img src="../YCD/images/search.png" alt="Search" /></button>
   </div>
   <div class="ordercart">
-    <div class="orderBtn"><a href="../YCD/orders.html"><button>Orders</button></a></div>
-    <div class="cart"><a href="../YCD/cart.html"><img src="../YCD/images/cart.png" alt="cart" /></a></div>
-  </div>
+    <div class="orderBtn"><a href="../YCD/orders.php"><button>Orders</button></a></div>
+    <div class="cart"><a href="../YCD/cart.php"><img src="../YCD/images/cart.png" alt="cart" /></a></div>
+  
   <div class="profile"><button><img src="../YCD/images/user.png" alt="User Icon" /></button></div>
 </header>
 
@@ -74,25 +103,37 @@ $conn->close();
 <section class="main-section">
   <div class="left-section">
     <div class="slideshow-container">
-      <?php if ($recipe): ?>
-        <?php if (!empty($recipe['Dish_image_1'])): ?>
-          <div class="slide fade"><img src="<?= $recipe['Dish_image_1'] ?>" /></div>
-        <?php endif; ?>
-        <?php if (!empty($recipe['Dish_image_2'])): ?>
-          <div class="slide fade"><img src="<?= $recipe['Dish_image_2'] ?>" /></div>
-        <?php endif; ?>
-        <?php if (!empty($recipe['Dish_image_3'])): ?>
-          <div class="slide fade"><img src="<?= $recipe['Dish_image_3'] ?>" /></div>
-        <?php endif; ?>
-        <div class="dots">
-          <?php for ($i = 1; $i <= 3; $i++): ?>
-            <?php if (!empty($recipe["Dish_image_$i"])): ?>
-              <span class="dot" onclick="currentSlide(<?= $i ?>)"></span>
-            <?php endif; ?>
-          <?php endfor; ?>
+  <?php if ($recipe): ?>
+    <?php $images = []; ?>
+    <?php for ($i = 1; $i <= 3; $i++): ?>
+      <?php if (!empty($recipe["Dish_image_$i"])): ?>
+        <?php $images[] = $recipe["Dish_image_$i"]; ?>
+        <div class="slide fade">
+          <img src="<?= htmlspecialchars($recipe["Dish_image_$i"]) ?>" />
         </div>
       <?php endif; ?>
+    <?php endfor; ?>
+
+    <!-- Dots -->
+    <div class="dots">
+      <?php foreach ($images as $index => $_): ?>
+        <span class="dot" onclick="currentSlide(<?= $index + 1 ?>)"></span>
+      <?php endforeach; ?>
     </div>
+
+    <!-- Thumbnails with link to YouTube -->
+    <?php if (!empty($recipe['ytLink'])): ?>
+      <div class="thumbnail-bar">
+        <?php foreach ($images as $image): ?>
+          <a href="<?= htmlspecialchars($recipe['ytLink']) ?>" target="_blank">
+            <img class="thumbnail" src="<?= htmlspecialchars($image) ?>" alt="Dish thumbnail" />
+          </a>
+        <?php endforeach; ?>
+      </div>
+    <?php endif; ?>
+  <?php endif; ?>
+</div>
+
 
     <div class="video-details">
       <?php if ($recipe): ?>
@@ -106,8 +147,15 @@ $conn->close();
           <p>Delivery Areas: <?= htmlspecialchars($recipe['Delivery_areas']) ?></p>
         </div>
         <div class="buttons">
-          <button class="order-btn">Order Now</button>
-          <button class="add-btn">Add To Cart</button>
+
+        <a href="placeOrder.php?recipe_id=<?= $recipe['Recipe_ID'] ?>">
+  <button class="order-btn">Order Now</button> </a>
+   <form method="POST" action="addToCart.php">
+        <input type="hidden" name="recipe_id" value="<?= $recipe_id ?>">
+        <input type="hidden" name="quantity" id="cartQuantity" value="1">
+        <button class="add-btn">Add To Cart</button></a>
+      </form>
+          
         </div>
       <?php else: ?>
         <p style="padding:1rem; color:red;">Recipe not found.</p>
@@ -130,21 +178,23 @@ $conn->close();
 <!-- Review Section -->
 <div class="review-section">
   <h3>Customer Reviews</h3>
-  <div class="review">
-    <p class="reviewer">👤 Amal Perera</p>
-    <p class="stars">⭐⭐⭐⭐☆</p>
-    <p class="comment">The kebabs were crispy and perfectly spiced. Will definitely order again!</p>
-  </div>
-  <div class="review">
-    <p class="reviewer">👤 Nadeesha Silva</p>
-    <p class="stars">⭐⭐⭐⭐⭐</p>
-    <p class="comment">Fast delivery and delicious food. Highly recommended!</p>
-  </div>
 
-  <form class="review-form">
+  <?php if (!empty($reviews)): ?>
+    <?php foreach ($reviews as $review): ?>
+      <div class="review">
+        <p class="reviewer">👤 <?= htmlspecialchars($review['ReviewerName']) ?></p>
+        <p class="stars"><?= str_repeat('⭐', intval($review['Rating'])) ?></p>
+        <p class="comment"><?= nl2br(htmlspecialchars($review['Comment'])) ?></p>
+      </div>
+    <?php endforeach; ?>
+  <?php else: ?>
+    <p>No reviews yet for this recipe.</p>
+  <?php endif; ?>
+
+  <form class="review-form" method="POST">
     <h4>Leave a Review</h4>
-    <input type="text" placeholder="Your Name" required />
-    <select required>
+    <input type="text" name="reviewer_name" placeholder="Your Name" required />
+    <select name="rating" required>
       <option value="">Rating</option>
       <option value="5">⭐⭐⭐⭐⭐</option>
       <option value="4">⭐⭐⭐⭐</option>
@@ -152,8 +202,8 @@ $conn->close();
       <option value="2">⭐⭐</option>
       <option value="1">⭐</option>
     </select>
-    <textarea placeholder="Write your review here..." required></textarea>
-    <button type="submit">Submit Review</button>
+    <textarea name="comment" placeholder="Write your review here..." required></textarea>
+    <button type="submit" name="submit_review">Submit Review</button>
   </form>
 </div>
 </main>

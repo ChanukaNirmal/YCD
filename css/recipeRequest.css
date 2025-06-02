@@ -167,3 +167,28 @@ td {
 .status.dispatched {
     color: #000;
 }
+.action-btn.connect {
+    background-color: #1e90ff;
+    color: white;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.status.pending { background: orange; color: white; padding: 3px 8px; border-radius: 4px; }
+.status.accepted { background: #28a745; color: white; padding: 3px 8px; border-radius: 4px; }
+.status.rejected { background: #dc3545; color: white; padding: 3px 8px; border-radius: 4px; }
+.status.dispatched { background: #007bff; color: white; padding: 3px 8px; border-radius: 4px; }
+
+.action-btn {
+    padding: 5px 10px;
+    margin: 2px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.accept { background-color: green; color: white; }
+.reject { background-color: red; color: white; }
+.dispatched { background-color: #007bff; color: white; }

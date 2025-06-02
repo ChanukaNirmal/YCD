@@ -9,28 +9,28 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST['email'] ?? '';
     $password = $_POST['password'] ?? '';
 
-    // Check if email exists in viewerRegister
-    $stmt = $conn->prepare("SELECT Password FROM riderRegister WHERE Email = ?");
-    $stmt->bind_param("s", $email);
-    $stmt->execute();
-    $stmt->store_result();
+    // Check if email exists in riderRegister
+$stmt = $conn->prepare("SELECT Rider_ID, Password FROM riderRegister WHERE Email = ?");
+$stmt->bind_param("s", $email);
+$stmt->execute();
+$stmt->store_result();
 
-    if ($stmt->num_rows === 1) {
-        $stmt->bind_result($hashedPassword);
-        $stmt->fetch();
+if ($stmt->num_rows === 1) {
+    $stmt->bind_result($riderId, $hashedPassword);
+    $stmt->fetch();
 
-        if (password_verify($password, $hashedPassword)) {
-            // Login success - redirect to viewerHome
-            header("Location: viewerHome.html");
-            exit;
-        } else {
-            $loginError = "Invalid email or password.";
-            $showError = true;
-        }
+    if (password_verify($password, $hashedPassword)) {
+        // ✅ Set Rider_ID session and redirect
+        $_SESSION['Rider_ID'] = $riderId;
+        header("Location: riderHome.php");
     } else {
         $loginError = "Invalid email or password.";
         $showError = true;
     }
+} else {
+    $loginError = "Invalid email or password.";
+    $showError = true;
+}
 
     $stmt->close();
     $conn->close();

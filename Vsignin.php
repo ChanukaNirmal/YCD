@@ -10,18 +10,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'] ?? '';
 
     // Check if email exists in viewerRegister
-    $stmt = $conn->prepare("SELECT Password FROM viewerRegister WHERE Email = ?");
+    $stmt = $conn->prepare("SELECT Viewer_ID, Password FROM viewerRegister WHERE Email = ?");
     $stmt->bind_param("s", $email);
     $stmt->execute();
     $stmt->store_result();
 
     if ($stmt->num_rows === 1) {
-        $stmt->bind_result($hashedPassword);
+        $stmt->bind_result($viewer_id_from_db, $hashedPassword);  // ✅ fetch both Viewer_ID and Password
         $stmt->fetch();
 
         if (password_verify($password, $hashedPassword)) {
-            // Login success - redirect to viewerHome
-            header("Location: viewerHome.php");
+            $_SESSION['Viewer_ID'] = $viewer_id_from_db;  // ✅ set session here
+            header("Location: viewerHome.php");  // ✅ redirect after login
             exit;
         } else {
             $loginError = "Invalid email or password.";
@@ -36,6 +36,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $conn->close();
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">

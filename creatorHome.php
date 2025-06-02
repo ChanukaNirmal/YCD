@@ -84,7 +84,7 @@ $channelLogo = (!empty($creatorInfo['logo']) && file_exists($creatorInfo['logo']
         <p><?= count($recipes) ?> Recipes</p>
       </div>
       <div class="channel-buttons">
-        <a href="../YCD/recipeRequest.html"><button class="orders"><img src="../YCD/images/orders.png"> Orders</button></a>
+        <a href="../YCD/recipeRequest.php"><button class="orders"><img src="../YCD/images/orders.png"> Orders</button></a>
         <a href="../YCD/addNewRecipe.php"><button class="add-recipes"><img src="../YCD/images/addRec.png"> Add Recipes</button></a>
       </div>
     </section>

@@ -2,10 +2,11 @@
 session_start();
 include "connection.php";
 
+
 // Fetch all recipes with creator info, randomly
 $sql = "
   SELECT 
-    r.Recipe_ID,              -- ✅ Needed for linking
+    r.Recipe_ID,              
     r.Recipe_title,
     r.Price,
     r.thumbnail,
@@ -54,12 +55,12 @@ $conn->close();
     </div>
     <div class="ordercart">
       <div class="orderBtn">
-        <a href="../YCD/orders.html"><button>Orders</button></a>
+        <a href="../YCD/orders.php"><button>Orders</button></a>
       </div>
       <div class="cart">
-        <a href="../YCD/cart.html"><img src="../YCD/images/cart.png" alt="cart" /></a>
+        <a href="../YCD/cart.php"><img src="../YCD/images/cart.png" alt="cart" /></a>
       </div>
-    </div>
+    
     <div class="profile">
       <button><img src="../YCD/images/user.png" alt="User Icon" /></button>
     </div>
@@ -89,4 +90,3 @@ $conn->close();
   <script src="../YCD/javascript/home.js"></script>
 </body>
 </html>
-
