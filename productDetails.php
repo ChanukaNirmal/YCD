@@ -78,6 +78,38 @@ $conn->close();
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>You Cook Delivers</title>
   <link rel="stylesheet" href="../YCD/css/productDetails.css" />
+  <style>
+  .profile {
+    position: relative;
+    display: inline-block;
+  }
+
+  .sign-out-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    border: 1px solid #ccc;
+    padding: 5px 10px;
+    z-index: 100;
+    border-radius: 4px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+  }
+
+  .sign-out-menu button {
+    background: none;
+    border: none;
+    color: #333;
+    cursor: pointer;
+    font-size: 14px;
+  }
+
+  .sign-out-menu button:hover {
+    color: red;
+  }
+</style>
+
 
 </head>
 <body>
@@ -96,7 +128,14 @@ $conn->close();
     <div class="orderBtn"><a href="../YCD/orders.php"><button>Orders</button></a></div>
     <div class="cart"><a href="../YCD/cart.php"><img src="../YCD/images/cart.png" alt="cart" /></a></div>
   
-  <div class="profile"><button><img src="../YCD/images/user.png" alt="User Icon" /></button></div>
+  <div class="profile">
+  <button id="userBtn">
+    <img src="../YCD/images/user.png" alt="User Icon" />
+  </button>
+  <div id="signOutMenu" class="sign-out-menu">
+    <button onclick="signOut()">Sign Out</button>
+  </div>
+</div>
 </header>
 
 <main>
@@ -225,7 +264,9 @@ function currentSlide(n) {
   slideIndex = n;
   showSlide(slideIndex);
 }
+
 </script>
+ <script src="../YCD/javascript/signout.js"> </script>
 </body>
 </html>
 

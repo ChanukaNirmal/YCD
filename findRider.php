@@ -97,7 +97,7 @@ $conn->close();
         <th>Rider ID</th>
         <th>Rider Name</th>
         <th>Service Area</th>
-        <th>Phone</th>
+        <th>Contact</th>
         <th>Action</th>
       </tr>
     </thead>
@@ -121,7 +121,14 @@ $conn->close();
     <?php endforeach; ?>
     </tbody>
   </table>
+  
 </div>
 
+<div class="note" style="width: fit-content; margin: 100px auto; text-align: center; padding: 0px; box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); font-family: Arial, sans-serif;">
+  <p>
+    Please contact the phone number provided under <b>"Contact"</b> to arrange the delivery service.<br>
+    After that, click the <b>"share Details"</b> button to send the delivery information to them.
+  </p>
+</div>
 </body>
 </html>

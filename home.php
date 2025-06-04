@@ -27,51 +27,19 @@ if ($result && $result->num_rows > 0) {
 }
 $conn->close();
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>You Cook Delivers</title>
-  <link rel="stylesheet" href="../YCD/css/viewerHome.css" />
-  <style>
+  <link rel="stylesheet" href="../YCD/css/home.css" />
+    <style>
     a.video-card {
       text-decoration: none;
       color: inherit;
       display: block;
     }
-  
-  .profile {
-    position: relative;
-    display: inline-block;
-  }
-
-  .sign-out-menu {
-    display: none;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 5px 10px;
-    z-index: 100;
-    border-radius: 4px;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-  }
-
-  .sign-out-menu button {
-    background: none;
-    border: none;
-    color: #333;
-    cursor: pointer;
-    font-size: 14px;
-  }
-
-  .sign-out-menu button:hover {
-    color: red;
-  }
-
   </style>
 </head>
 <body>
@@ -81,28 +49,22 @@ $conn->close();
     </div>
     <div class="search-bar">
       <input type="text" placeholder="Search channel or food item" />
-      <button class="clear"><img src="../YCD/images/close.png" alt="Clear" /></button>
-      <button class="search-btn"><img src="../YCD/images/search.png" alt="Search" /></button>
+      <button class="clear">
+        <img src="../YCD/images/close.png" alt="Clear" />
+      </button>
+      <button class="search-btn">
+        <img src="../YCD/images/search.png" alt="Search" />
+      </button>
     </div>
-    <div class="ordercart">
-      <div class="orderBtn">
-        <a href="../YCD/riderRequest.php"><button>Delivery Request</button></a>
-      </div>
-      <div class="cart">
-        <a href="../YCD/cart.php"><img src="../YCD/images/cart.png" alt="cart" /></a>
-      </div>
-    
-<div class="profile">
-  <button id="userBtn">
-    <img src="../YCD/images/user.png" alt="User Icon" />
-  </button>
-  <div id="signOutMenu" class="sign-out-menu">
-    <button onclick="signOut()">Sign Out</button>
-  </div>
-</div>
+    <div class="signup">
+    <a href="../YCD/type.html">
+      <button><img src="../YCD/images/user.png" alt="User Icon" /> Sign up</button>
+    </a>
+    </div>
   </header>
 
   <main>
+<main>
     <section class="video-grid">
       <?php if (count($recipes) > 0): ?>
         <?php foreach ($recipes as $recipe): ?>
@@ -123,8 +85,9 @@ $conn->close();
     </section>
   </main>
 
-  <script src="../YCD/javascript/home.js"> </script>
-  <script src="../YCD/javascript/signout.js"> </script>
+  <script src="../YCD/javascript/home.js"></script>
+  </main>
 
+  <script src="../YCD/javascript/home.js"></script>
 </body>
 </html>

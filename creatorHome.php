@@ -73,6 +73,7 @@ $channelLogo = (!empty($creatorInfo['logo']) && file_exists($creatorInfo['logo']
       <a href="../YCD/addNewRecipe.php"><button class="create"><img src="../YCD/images/plus.png"> Create</button></a>
       <button class="profile"><img src="../YCD/images/user.png" alt="User Icon" /></button>
     </div>
+    
   </header>
 
   <main>
@@ -114,6 +115,7 @@ $channelLogo = (!empty($creatorInfo['logo']) && file_exists($creatorInfo['logo']
       </div>
     </section>
   </main>
+   <script src="../YCD/javascript/signout.js"> </script>
 </body>
 </html>
 
