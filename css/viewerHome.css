@@ -1,0 +1,165 @@
+/* Reset & Base */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #0f0f0f;
+  color: #fff;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f1f1f;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo img {
+  width: 120px;
+}
+.orderBtn button{
+  background-color: transparent;
+  color: white;
+  padding: 7px 12px;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.cart img{
+  width: 30px;
+  height: 30px;
+  background-color:transparent;
+}
+.ordercart{
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
+
+.search-bar {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  max-width: 600px;
+  margin: 0 20px;
+  position: relative;
+}
+
+.search-bar input {
+  width: 100%;
+  padding: 10px 40px 10px 15px;
+  border: none;
+  border-radius: 20px;
+  font-size: 1rem;
+  background-color: #303030; /* Matches mockup */
+  color: #fff;
+}
+
+.search-bar input::placeholder {
+  color: #aaa; /* Soft grey placeholder like in the mockup */
+}
+
+.search-bar .search-btn,
+.search-bar .clear {
+  position: absolute;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+}
+
+.search-bar .clear {
+  right: 35px;
+}
+
+.search-bar .search-btn {
+  right: 5px;
+}
+
+.search-bar img {
+  width: 20px;
+  height: 20px;
+}
+
+.profile button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.profile img {
+  width: 25px;
+  height: 25px;
+}
+
+/* Video Grid */
+.video-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px;
+}
+
+.video-card {
+  background-color: #1e1e1e;
+  border-radius: 10px;
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.video-card:hover {
+  transform: scale(1.03);
+}
+
+.video-card img {
+  width: 100%;
+  display: block;
+}
+
+.video-info {
+  padding: 10px;
+}
+
+.video-info h4 {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: #fff;
+}
+
+.channel-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.channel-info img {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+}
+
+.channel-info span {
+  font-size: 0.85rem;
+  color: #aaa;
+}

@@ -1,0 +1,126 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+
+}
+.profile button {
+  background-color: transparent;
+  color: white;
+  border: 1px solid #fff;
+  border-radius: 20px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+}
+
+.profile img {
+  width: 25px;
+  height: 25px;
+}
+
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background-color: #0f0f0f;
+  color: #fff;
+}
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #1f1f1f;
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.logo img {
+  width: 120px;
+}
+body {
+  background-color: #0d0d0d;
+  color: white;
+  font-family: Arial, sans-serif;
+  min-height: 100vh;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+}
+
+.logo-section {
+  display: flex;
+  align-items: center;
+}
+
+.logo {
+  height: 50px;
+  margin-right: 10px;
+}
+
+.logo-text {
+  font-size: 20px;
+  font-weight: bold;
+  line-height: 1.1;
+}
+
+.logo-text small {
+  font-size: 12px;
+  color: #aaa;
+}
+
+.profile-btn img {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: #fff;
+  padding: 5px;
+}
+
+main {
+  padding: 30px 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.card-grid {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.card {
+  background-color: #1a1a1a;
+  padding: 20px;
+  width: 180px;
+  text-align: center;
+  border-radius: 15px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: #333;
+}
+
+.card img {
+  width: 100px;
+  height: 100px;
+  margin-bottom: 15px;
+}
+
+.card p {
+  font-size: 16px;
+  font-weight: 500;
+}
